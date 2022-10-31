@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, centos-latest]
     
     strategy:
       matrix:
@@ -49,4 +49,4 @@ jobs:
     
       - name: Test with unittest
         run: |
-          python -m unittest discover
+          python --version
