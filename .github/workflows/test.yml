@@ -46,8 +46,7 @@ jobs:
           push: true
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-          tag: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tag: bala001/centos:8
 
       # Runs a single command using the runners shell
       # - name: Setting up Python ${{ matrix.python-version }}
