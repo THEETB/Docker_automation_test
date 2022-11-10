@@ -46,8 +46,8 @@ jobs:
           push: true
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-          repository: bala001/base_os
-          tag: latest
+          tag: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       # Runs a single command using the runners shell
       # - name: Setting up Python ${{ matrix.python-version }}
