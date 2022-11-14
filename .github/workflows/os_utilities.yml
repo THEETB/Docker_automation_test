@@ -31,7 +31,16 @@ jobs:
         with:
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-      
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Test with environment variables
+        env:
+          TAG_NAME: 2022q26
+          RELEASE_NAME: ${{ steps.date.outputs.date }}
+
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
@@ -39,4 +48,4 @@ jobs:
           context: ./OS_Utilities/
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-          tags: bala001/base_os:centos8
+          tags: bala001/cp-os-utilities:$TAG_NAME-$RELEASE_NAME
