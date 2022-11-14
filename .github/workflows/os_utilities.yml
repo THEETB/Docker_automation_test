@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Baseos
+name: OS_Utilities
 
 # Controls when the workflow will run
 on:
@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          context: ./baseos/
+          context: ./OS_Utilities/
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
           tags: bala001/base_os:centos8
