@@ -1,4 +1,4 @@
-FROM bala001/centos:2022q26-20221115153441
+FROM bala001/centos:$TAG_NAME
 
 RUN echo "installing centos rpms..." \
     && yum clean all \
