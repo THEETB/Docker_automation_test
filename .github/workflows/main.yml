@@ -7,9 +7,10 @@ on:
   workflow_dispatch:
     # The type of runner that the job will run on
 jobs:
-  call-workflow1:
+  call-workflow:
     uses: ./.github/workflows/baseos.yaml
     secrets: inherit
-  call-workflow2:
+  call-workflow1:
+    needs: [call-workflow]
     uses: ./.github/workflows/os_utilities.yml
     secrets: inherit
