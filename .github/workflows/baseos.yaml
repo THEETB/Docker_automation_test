@@ -31,16 +31,10 @@ jobs:
         with:
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-      
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
       - name: Test with environment variables
-        run: echo $TAG_NAME - $RELEASE_NAME
-        env:
-          TAG_NAME: 2022q26
-          RELEASE_NAME: ${{ steps.date.outputs.date }}
+        id: date
+        run: echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
 
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -49,4 +43,4 @@ jobs:
           context: ./baseos/
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-          tags: bala001/base_os:centos8
+          tags: bala001/centos:2022q26-${{ env.date }}
