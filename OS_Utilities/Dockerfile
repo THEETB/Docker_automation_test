@@ -1,4 +1,4 @@
-FROM centos:$TAG_NAME
+FROM centos:2022q26-20221115153441
 
 RUN echo "installing centos rpms..." \
     && yum clean all \
