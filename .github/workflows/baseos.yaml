@@ -61,8 +61,8 @@ jobs:
         with:
           push: true
           context: ./baseos/
-          username: ${{ secrets.Docker_Hub_Username }}
-          password: ${{ secrets.Docker_Hub_Password }}
+#           username: ${{ secrets.Docker_Hub_Username }}
+#           password: ${{ secrets.Docker_Hub_Password }}
           tags: bala001/centos:${{ env.tag }}
           build-args: |
             RELEASE_TAG=${{ inputs.baseos_tag }}
