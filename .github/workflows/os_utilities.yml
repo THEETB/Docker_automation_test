@@ -6,7 +6,11 @@ name: OS_Utilities
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_call:
-
+    inputs:
+      release_tag:
+        description: "The release tag of previous layer"
+        required: true
+        type: string
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -19,7 +23,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 
         uses: actions/Checkout@v3
-            
+        with:
+          ref: ${{ github.event.client_payload.sha }}
+          
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
         
@@ -43,4 +49,6 @@ jobs:
           context: ./OS_Utilities/
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-          tags: bala001/cp-os-utilities:2022q26-${{ env.date }}
+          tags: bala001/cp-os-utilities:${{ inputs.baseos_tag }}-${{ env.date }}
+          build-args: |
+            RELEASE_TAG=${{ inputs.release_tag }}
