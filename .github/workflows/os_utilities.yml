@@ -56,4 +56,4 @@ jobs:
           password: ${{ secrets.Docker_Hub_Password }}
           tags: bala001/cp-os-utilities:${{ inputs.baseos_tag }}-${{ env.date }}
           build-args: |
-            RELEASE_TAG=${{ inputs.release_tag }}
+            RELEASE_TAG=${{ inputs.baseos_tag }}
