@@ -11,6 +11,11 @@ on:
         description: "The release tag of previous layer"
         required: true
         type: string
+      baseos_tag:
+        description: "The base os tag"
+        required: true
+        type: string
+        
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
