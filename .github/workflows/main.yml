@@ -18,4 +18,5 @@ jobs:
     uses: ./.github/workflows/os_utilities.yml
     secrets: inherit
     with:
-      release_tag: ${{ needs.call-workflow.outputs.output1 }}
+      baseos_tag: ${{ needs.call-workflow.outputs.output1 }}
+      release_tag: ${{ secrets.RELEASE_TAG }}
