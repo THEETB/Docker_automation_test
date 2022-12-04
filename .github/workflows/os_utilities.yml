@@ -6,15 +6,13 @@ name: OS_Utilities
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_call:
-    inputs:
+    secrets:
       release_tag:
         description: "The release tag of previous layer"
         required: true
-        type: string
       baseos_tag:
         description: "The base os tag"
         required: true
-        type: string
     outputs:
       output1:
         description: "Passing the release tag for this layer"
@@ -54,8 +52,8 @@ jobs:
       - name: Setting up release tag for this layer
         id: release_tag
         run: |
-          echo "tag=${{ inputs.release_tag }}-${{ env.date }}" >> $GITHUB_ENV
-          echo "tag=${{ inputs.release_tag }}-${{ env.date }}" >> $GITHUB_OUTPUT
+          echo "tag=$release_tag-${{ env.date }}" >> $GITHUB_ENV
+          echo "tag=$release_tag-${{ env.date }}" >> $GITHUB_OUTPUT
 
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -66,4 +64,4 @@ jobs:
           password: ${{ secrets.Docker_Hub_Password }}
           tags: bala001/cp-os-utilities:${{ env.tag }}
           build-args: |
-            RELEASE_TAG=${{ inputs.baseos_tag }}
+            RELEASE_TAG=$baseos_tag
