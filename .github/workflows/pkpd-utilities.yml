@@ -60,9 +60,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          context: ./OS_Utilities/
+          context: ./pkpd_Utilities/
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-          tags: bala001/cp-os-utilities:${{ env.tag }}
+          tags: bala001/cp-pkpd-utilities:${{ env.tag }}
           build-args: |
             RELEASE_TAG=${{ inputs.baseos_tag }}
