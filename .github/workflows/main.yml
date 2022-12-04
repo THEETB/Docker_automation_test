@@ -9,14 +9,12 @@ on:
 jobs:
   call-workflow:
     uses: ./.github/workflows/baseos.yaml
-    secrets: inherit
-    with:
+    secrets: 
       release_tag: ${{ secrets.RELEASE_TAG }}
       baseos_tag: ${{ secrets.BASEOS_TAG }}
   call-workflow1:
     needs: call-workflow
     uses: ./.github/workflows/os_utilities.yml
-    secrets: inherit
-    with:
+    secrets: 
       baseos_tag: ${{ needs.call-workflow.outputs.output1 }}
       release_tag: ${{ secrets.RELEASE_TAG }}
