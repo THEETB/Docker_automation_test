@@ -13,6 +13,12 @@ on:
       baseos_tag:
         description: "Defines the initial base os tag"
         required: true
+      Docker_Hub_Username:
+        description: "Contains the DockerHub Username"
+        required: true
+      Docker_Hub_Password:
+        description: "Contains the DockerHub Password"
+        required: true
     outputs:
       output1:
         description: "Passing the release tag for this layer"
