@@ -14,6 +14,8 @@ jobs:
     needs: call-workflow
     uses: ./.github/workflows/os_utilities.yml
     secrets: inherit
+    with:
+      release_tag: ${{ needs.call-workflow.outputs.output1 }}
 #   call-workflow2:
 #     needs: call-workflow1
 #     uses: ./.github/workflows/pkpd-utilities.yml
