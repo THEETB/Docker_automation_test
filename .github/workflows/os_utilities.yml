@@ -52,8 +52,8 @@ jobs:
       - name: Setting up release tag for this layer
         id: release_tag
         run: |
-          echo "tag=$release_tag-${{ env.date }}" >> $GITHUB_ENV
-          echo "tag=$release_tag-${{ env.date }}" >> $GITHUB_OUTPUT
+          echo "tag=${{ secrets.release_tag }}-${{ env.date }}" >> $GITHUB_ENV
+          echo "tag=${{ secrets.release_tag }}-${{ env.date }}" >> $GITHUB_OUTPUT
 
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -64,4 +64,4 @@ jobs:
           password: ${{ secrets.Docker_Hub_Password }}
           tags: bala001/cp-os-utilities:${{ env.tag }}
           build-args: |
-            RELEASE_TAG=$baseos_tag
+            RELEASE_TAG=${{ secrets.baseos_tag }}
