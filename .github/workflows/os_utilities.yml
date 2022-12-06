@@ -55,7 +55,7 @@ jobs:
         id: release_tag
         run: |
           echo "tag=${{ secrets.release_tag }}-${{ env.date }}" >> $GITHUB_ENV
-          echo "tag=${{ inputs.release_tag }}-${{ env.date }}" >> $GITHUB_OUTPUT
+          echo "tag=${{ secrets.release_tag }}-${{ env.date }}" >> $GITHUB_OUTPUT
 
       - name: Build and push
         uses: docker/build-push-action@v3
