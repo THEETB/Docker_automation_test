@@ -60,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          context: ./pkpd_Utilities/
+          context: ./pkpd_utilities/
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
           tags: bala001/cp-pkpd-utilities:${{ env.tag }}
