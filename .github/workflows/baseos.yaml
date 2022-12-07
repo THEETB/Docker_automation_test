@@ -7,9 +7,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_call:
     secrets:
-      release_tag:
-        description: "Defines the release tag for each layers"
-        required: true
       baseos_tag:
         description: "Defines the initial base os tag"
         required: true
@@ -19,6 +16,11 @@ on:
       Docker_Hub_Password:
         description: "Contains the DockerHub Password"
         required: true
+    inputs:
+      release_tag:
+        description: "Defines the release tag for each layers"
+        required: true
+        type: string
     outputs:
       output1:
         description: "Passing the release tag for this layer"
@@ -57,16 +59,14 @@ jobs:
       - name: Setting up release tag for this layer
         id: release_tag
         run: |
-          echo "tag=${{ secrets.release_tag }}-${{ env.date }}" >> $GITHUB_ENV
-          echo "tag=${{ secrets.release_tag }}-${{ env.date }}" >> $GITHUB_OUTPUT
+          echo "tag=${{ inputs.release_tag }}-${{ env.date }}" >> $GITHUB_ENV
+          echo "tag=${{ inputs.release_tag }}-${{ env.date }}" >> $GITHUB_OUTPUT
 
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           push: true
           context: ./baseos/
-#           username: ${{ secrets.Docker_Hub_Username }}
-#           password: ${{ secrets.Docker_Hub_Password }}
           tags: bala001/centos:${{ env.tag }}
           build-args: |
             RELEASE_TAG=${{ secrets.baseos_tag }}
