@@ -24,3 +24,6 @@ jobs:
     needs: call-workflow1
     uses: ./.github/workflows/pkpd-utilities.yml
     secrets: inherit
+    with:
+      baseos_tag: ${{ needs.call-workflow1.outputs.output1 }}
+      release_tag: 2022q26
