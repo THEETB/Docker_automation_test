@@ -10,12 +10,15 @@ jobs:
   call-workflow:
     uses: ./.github/workflows/baseos.yaml
     secrets: inherit
+    with:
+      release_tag: 2022q26
   call-workflow1:
     needs: call-workflow
     uses: ./.github/workflows/os_utilities.yml
     secrets: inherit
     with:
       baseos_tag: ${{ needs.call-workflow.outputs.output1 }}
+      release_tag: 2022q26
 #   call-workflow2:
 #     needs: call-workflow1
 #     uses: ./.github/workflows/pkpd-utilities.yml
