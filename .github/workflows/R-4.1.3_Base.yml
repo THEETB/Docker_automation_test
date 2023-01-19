@@ -64,6 +64,6 @@ jobs:
           context: ./R-4.1.3_Base/
           username: ${{ secrets.Docker_Hub_Username }}
           password: ${{ secrets.Docker_Hub_Password }}
-          tags: bala001/R413_Base:${{ env.tag }}
+          tags: bala001/cp-r413-base:${{ env.tag }}
           build-args: |
             RELEASE_TAG=${{ inputs.baseos_tag }}
