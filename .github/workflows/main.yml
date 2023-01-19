@@ -27,3 +27,10 @@ jobs:
     with:
       baseos_tag: ${{ needs.call-workflow1.outputs.output1 }}
       release_tag: 2022q26
+  call-workflow3:
+    needs: call-workflow2
+    uses: ./.github/workflows/R-4.1.3_Base.yml
+    secrets: inherit
+    with:
+      baseos_tag: ${{ needs.call-workflow2.outputs.output1 }}
+      release_tag: 2022q26
