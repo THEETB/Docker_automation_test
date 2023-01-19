@@ -1,4 +1,5 @@
-FROM cp-julia-1.7.3:2022q22-20220920232038603487765
+ARG RELEASE_TAG
+FROM bala001/cp-pkpd-utilities:${RELEASE_TAG}
 
 COPY R-4.1.3.tar.gz /sources
 
