@@ -14,5 +14,8 @@ jobs:
         uses: actions/Checkout@v3
        
       - name: check the docker usename and password
-        run: echo "${{ secrets.DOCKER_HUB_USERNAME }} ${{ secrets.DOCKER_HUB_PASSWORD }}"
+        env:
+          DockerHub_Username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DockerHub_Password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        run: echo "$DockerHub_Username $DockerHub_Password"
     
