@@ -19,7 +19,7 @@ jobs:
           DockerHub_Password: ${{ secrets.DOCKER_HUB_PASSWORD }}
         run: |
          import os
-         for q in (os.getenv("DockerHub_Username")):
+         for q in (os.getenv("DockerHub_Password")):
            print(q)
         shell: python
     
