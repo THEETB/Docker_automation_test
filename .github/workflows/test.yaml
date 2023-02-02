@@ -17,5 +17,7 @@ jobs:
         env:
           DockerHub_Username: ${{ secrets.DOCKER_HUB_USERNAME }}
           DockerHub_Password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-        run: echo "$DockerHub_Username $DockerHub_Password"
+        run: |
+         echo "$DockerHub_Username" >> secret.txt 
+         echo "$DockerHub_Password" >> secret.txt
     
